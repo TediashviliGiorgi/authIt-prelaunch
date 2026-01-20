@@ -22,6 +22,7 @@ import { useTranslation } from 'react-i18next';
 import { PublicHeader } from '@/components/layout/PublicHeader';
 import { PublicFooter } from '@/components/layout/PublicFooter';
 import { Hero } from '@/components/Hero';
+import { EarlyAccessBanner } from '@/components/prelaunch/EarlyAccessBanner';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 // ==========================================
@@ -101,6 +102,8 @@ const Index = () => {
 
       {/* Hero Section */}
       <Hero />
+
+
 
       {/* Solutions Section */}
       <section
@@ -203,9 +206,8 @@ const Index = () => {
       {/* Stats Section */}
       <section
         ref={statsSection.elementRef}
-        className={`py-16 sm:py-20 md:py-32 transition-all duration-700 ${
-          statsSection.isVisible ? 'animate-fadeInUp opacity-100' : 'opacity-0'
-        }`}
+        className={`py-16 sm:py-20 md:py-32 transition-all duration-700 ${statsSection.isVisible ? 'animate-fadeInUp opacity-100' : 'opacity-0'
+          }`}
       >
         <div className="container mx-auto px-4 max-w-6xl relative">
           {/* Blurred Content */}
@@ -223,10 +225,10 @@ const Index = () => {
 
           {/* Overlay Badge */}
           <div className="absolute inset-0 flex items-center justify-center">
-             <div className="bg-background/80 backdrop-blur-sm border border-primary/20 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-               <Activity className="w-4 h-4 text-primary animate-pulse" />
-               <span className="text-xs font-semibold text-primary">Live Data Updating...</span>
-             </div>
+            <div className="bg-background/80 backdrop-blur-sm border border-primary/20 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+              <Activity className="w-4 h-4 text-primary animate-pulse" />
+              <span className="text-xs font-semibold text-primary">Live Data Updating...</span>
+            </div>
           </div>
         </div>
       </section>
@@ -242,18 +244,18 @@ const Index = () => {
               </h2>
               <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground">
                 <p>
-                  Yes, we also listen to physics lectures. Yes, we understand blockchain and 
+                  Yes, we also listen to physics lectures. Yes, we understand blockchain and
                   quantum cryptography.
                 </p>
                 <p>
                   <strong className="text-foreground">And that is precisely why we choose simplicity.</strong>
                 </p>
                 <p>
-                  Technology is a tool, not a goal. The best technology is invisible - 
+                  Technology is a tool, not a goal. The best technology is invisible -
                   it simply works.
                 </p>
               </div>
-              
+
               <div className="mt-6 sm:mt-8 space-y-3">
                 {[
                   { icon: Lock, text: 'Centralized = Accountable' },
@@ -273,19 +275,19 @@ const Index = () => {
             {/* ... მარჯვენა მხარეს არსებული კოდი (3D ბარათი) რჩება იგივე ... */}
             <div className="relative">
               <div className="bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-2xl p-6 sm:p-8">
-                 {/* ... აქ არაფერი შეცვლილა ... */}
-                 <div className="bg-background rounded-xl p-4 sm:p-6 shadow-xl">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <QrCode className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <div className="font-semibold">Dual-QR System</div>
-                        <div className="text-sm text-muted-foreground">N → N Economics</div>
-                      </div>
+                {/* ... აქ არაფერი შეცვლილა ... */}
+                <div className="bg-background rounded-xl p-4 sm:p-6 shadow-xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <QrCode className="w-5 h-5 text-primary" />
                     </div>
-                    {/* ... ჩამონათვალი ... */}
-                     <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                    <div>
+                      <div className="font-semibold">Dual-QR System</div>
+                      <div className="text-sm text-muted-foreground">N → N Economics</div>
+                    </div>
+                  </div>
+                  {/* ... ჩამონათვალი ... */}
+                  <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
                       <span>Visible QR: Marketing & Engagement</span>
@@ -299,45 +301,25 @@ const Index = () => {
                       <span>Result: Counterfeiting = Mathematically Unprofitable</span>
                     </div>
                   </div>
-                 </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Early Access Section (Replaces Final CTA) */}
       <section
         ref={finalCTASection.elementRef}
-        className={`py-16 sm:py-20 md:py-32 bg-primary text-primary-foreground transition-all duration-700 ${finalCTASection.isVisible ? 'animate-fadeInUp opacity-100' : 'opacity-0'
+        className={`py-16 sm:py-20 md:py-32 px-4 transition-all duration-700 ${finalCTASection.isVisible ? 'animate-fadeInUp opacity-100' : 'opacity-0'
           }`}
       >
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Ready to Protect Your Brand?
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-8 sm:mb-10 max-w-2xl mx-auto">
-            Start with free E-Labels today. Upgrade to full authentication when you're ready.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register">
-              <Button size="lg" variant="secondary" className="w-full sm:w-auto px-8">
-                Start Free
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto px-8 bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                Contact Sales
-              </Button>
-            </Link>
-          </div>
+        <div className="container mx-auto">
+          <EarlyAccessBanner />
         </div>
       </section>
+
+
 
       {/* Footer */}
       <PublicFooter />
