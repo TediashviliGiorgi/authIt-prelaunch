@@ -1,0 +1,726 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme transition animations */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease, fill 0.3s ease, stroke 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Disable transitions on page load to prevent flash */
+.no-transitions, .no-transitions * {
+  transition: none !important;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Clean institutional design with sky-blue accents and glassmorphism */
+    /* Subtle sky-blue gradient background */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 25%;
+
+    /* Glass-effect cards with subtle backdrop */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 25%;
+
+    /* Primary: Professional sky-blue (more vibrant) */
+    --primary: 200 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Primary hover: Deeper sky-blue */
+    --primary-hover: 200 85% 38%;
+
+    /* Secondary: Soft blue-gray */
+    --secondary: 210 30% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Very light sky-blue */
+    --muted: 210 40% 97%;
+    --muted-foreground: 215 20% 45%;
+
+    /* Accent: Light sky-blue for highlights */
+    --accent: 200 95% 95%;
+    --accent-foreground: 200 85% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders: Subtle blue-gray */
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 200 85% 45%;
+
+    /* Modern glassmorphism radius */
+    --radius: 1rem;
+
+    /* Success state: Professional green */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning state: Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Info: Light sky-blue */
+    --info-bg: 200 95% 95%;
+    --info-foreground: 200 85% 40%;
+
+    /* Sidebar: Clean with sky-blue accents */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 200 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 95% 95%;
+    --sidebar-accent-foreground: 200 85% 45%;
+    --sidebar-border: 210 30% 88%;
+    --sidebar-ring: 200 85% 45%;
+
+    /* Vintage Aristocratic Premium Colors */
+    --vintage-gold: 43 74% 66%;
+    --vintage-bronze: 32 40% 48%;
+    --vintage-burgundy: 0 45% 35%;
+    --vintage-cream: 43 33% 94%;
+    --vintage-charcoal: 0 0% 25%;
+    --vintage-shadow: 0 0% 0%;
+
+    /* Modern Luxury Colors */
+    --luxury-dark: 220 25% 8%;
+    --luxury-charcoal: 220 20% 12%;
+    --luxury-slate: 220 15% 18%;
+    --luxury-gold: 45 80% 55%;
+    --luxury-gold-dim: 45 60% 40%;
+    --luxury-champagne: 45 40% 85%;
+    --luxury-pearl: 45 20% 95%;
+  }
+
+  .dark {
+    /* Dark mode: Deep blue-gray slate-900 background */
+    --background: 215 25% 10%;
+    --foreground: 0 0% 98%;
+
+    /* Dark cards with subtle elevation */
+    --card: 215 20% 14%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 20% 14%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary: Vibrant sky-blue for dark mode (matching light mode brand) */
+    --primary: 200 85% 55%;
+    --primary-foreground: 215 25% 10%;
+
+    --primary-hover: 200 85% 60%;
+
+    /* Secondary: Muted slate */
+    --secondary: 215 20% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 16% 65%;
+
+    /* Accent: Subtle slate for dark mode */
+    --accent: 215 20% 20%;
+    --accent-foreground: 200 85% 65%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 200 85% 55%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info-bg: 215 20% 18%;
+    --info-foreground: 200 85% 65%;
+
+    --sidebar-background: 215 25% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 200 85% 55%;
+    --sidebar-primary-foreground: 215 25% 10%;
+    --sidebar-accent: 215 20% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 20% 22%;
+    --sidebar-ring: 200 85% 55%;
+
+    /* Dark mode luxury colors - adjust for product pages */
+    --luxury-dark: 220 25% 8%;
+    --luxury-charcoal: 220 20% 12%;
+    --luxury-slate: 220 15% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Institutional clean look with better letter spacing */
+    letter-spacing: -0.011em;
+  }
+
+  /* Professional typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-foreground;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+    font-weight: 600;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+    font-weight: 600;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+    font-weight: 600;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Clean focus styles for institutional accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Professional paragraphs with optimal line height */
+  p {
+    @apply leading-relaxed text-foreground/90;
+  }
+}
+
+/* Micro-interactions and animations - Institutional & Professional */
+@layer utilities {
+  /* Subtle professional hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-[1.01];
+  }
+
+  /* Clean institutional card styles */
+  .card-institutional {
+    @apply bg-card border border-border/50 rounded-lg shadow-sm;
+  }
+
+  .card-institutional-elevated {
+    @apply bg-card border border-border/50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+
+  /* Professional button styles */
+  .btn-institutional {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover;
+    @apply shadow-sm hover:shadow-md;
+  }
+
+  .btn-institutional-outline {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Clean section dividers */
+  .section-divider {
+    @apply border-t border-border/30 my-12;
+  }
+
+  /* Glassmorphism effects - Theme-aware with minimal borders */
+  .glass {
+    @apply bg-background/70 backdrop-blur-xl shadow-lg;
+  }
+
+  :root .glass {
+    @apply bg-white/70;
+  }
+
+  .dark .glass {
+    @apply bg-slate-900/70;
+  }
+
+  .glass-card {
+    @apply bg-card backdrop-blur-md rounded-2xl shadow-xl;
+    @apply transition-all duration-300;
+  }
+
+  :root .glass-card {
+    @apply bg-white/80;
+  }
+
+  .dark .glass-card {
+    @apply bg-slate-800/90;
+  }
+
+  .glass-card:hover {
+    @apply shadow-2xl;
+    transform: translateY(-2px);
+  }
+
+  :root .glass-card:hover {
+    @apply bg-white/90;
+  }
+
+  .dark .glass-card:hover {
+    @apply bg-slate-800;
+  }
+
+  .glass-header {
+    @apply bg-background/60 backdrop-blur-lg;
+  }
+
+  :root .glass-header {
+    @apply bg-white/60;
+  }
+
+  .dark .glass-header {
+    @apply bg-slate-900/80;
+  }
+
+  .glass-button {
+    @apply bg-primary/10 backdrop-blur-sm hover:bg-primary/20;
+    @apply transition-all duration-200;
+  }
+
+  .dark .glass-button {
+    @apply bg-primary/15 hover:bg-primary/25;
+  }
+
+  /* Icon accent colors */
+  .icon-primary {
+    @apply text-primary;
+  }
+
+  .icon-secondary {
+    @apply text-secondary;
+  }
+
+  .icon-accent {
+    @apply text-accent-foreground;
+  }
+
+  /* Vintage Aristocratic Premium Styles */
+  .vintage-premium {
+    @apply bg-gradient-to-br from-[hsl(var(--vintage-cream))] to-white;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.02) 0%, transparent 50%);
+  }
+
+  .vintage-card {
+    @apply bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl;
+    @apply border-2 border-[hsl(var(--vintage-gold))]/20;
+    box-shadow:
+      0 20px 50px -12px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(251, 191, 36, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .vintage-card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .vintage-card-hover:hover {
+    @apply shadow-[0_30px_70px_-15px_rgba(0,0,0,0.2)];
+    transform: translateY(-4px);
+  }
+
+  .vintage-heading {
+    font-family: 'Playfair Display', serif;
+    @apply text-[hsl(var(--vintage-charcoal))];
+    letter-spacing: 0.02em;
+  }
+
+  .vintage-text {
+    font-family: 'Cormorant Garamond', serif;
+    @apply text-[hsl(var(--vintage-charcoal))]/80;
+    letter-spacing: 0.01em;
+  }
+
+  .vintage-gold-accent {
+    @apply text-[hsl(var(--vintage-gold))];
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+  }
+
+  .vintage-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-[hsl(var(--vintage-gold))]/30 to-transparent;
+    @apply my-8;
+  }
+
+  .vintage-ornament {
+    @apply text-[hsl(var(--vintage-gold))] text-2xl;
+    filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.2));
+  }
+
+  /* Premium shadow effects */
+  .shadow-vintage {
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(251, 191, 36, 0.05);
+  }
+
+  .shadow-vintage-lg {
+    box-shadow:
+      0 20px 50px -12px rgba(0, 0, 0, 0.15),
+      0 10px 20px -8px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(251, 191, 36, 0.08);
+  }
+
+  /* Modern Luxury Theme Styles - Theme Aware */
+  .luxury-theme {
+    @apply bg-background;
+  }
+
+  .luxury-theme-overlay {
+    @apply bg-gradient-to-b from-background via-background to-muted/50;
+  }
+
+  .luxury-card {
+    @apply rounded-2xl border backdrop-blur-xl bg-card/80;
+    border-color: hsl(var(--luxury-gold) / 0.15);
+    box-shadow:
+      0 25px 60px -15px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 0 hsl(var(--luxury-gold) / 0.1);
+  }
+
+  .dark .luxury-card {
+    background: linear-gradient(135deg, hsl(var(--luxury-slate)/0.6) 0%, hsl(var(--luxury-charcoal)/0.8) 100%);
+    box-shadow:
+      0 25px 60px -15px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 0 hsl(var(--luxury-gold) / 0.1);
+  }
+
+  .luxury-card-hover {
+    @apply transition-all duration-700 ease-out;
+  }
+
+  .luxury-card-hover:hover {
+    border-color: hsl(var(--luxury-gold) / 0.3);
+    box-shadow:
+      0 35px 80px -20px rgba(0, 0, 0, 0.2),
+      0 0 60px -15px hsl(var(--luxury-gold) / 0.1),
+      inset 0 1px 0 0 hsl(var(--luxury-gold) / 0.2);
+  }
+
+  .dark .luxury-card-hover:hover {
+    box-shadow:
+      0 35px 80px -20px rgba(0, 0, 0, 0.6),
+      0 0 60px -15px hsl(var(--luxury-gold) / 0.15),
+      inset 0 1px 0 0 hsl(var(--luxury-gold) / 0.2);
+  }
+
+  .luxury-heading {
+    font-family: 'Playfair Display', serif;
+    @apply text-foreground;
+    letter-spacing: 0.04em;
+  }
+
+  .luxury-text {
+    font-family: 'Cormorant Garamond', serif;
+    @apply text-muted-foreground;
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+  }
+
+  .luxury-gold-text {
+    background: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-champagne)) 50%, hsl(var(--luxury-gold)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .luxury-divider {
+    @apply h-px my-12;
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--luxury-gold)/0.4) 50%, transparent 100%);
+  }
+
+  .luxury-glow {
+    box-shadow: 0 0 80px -20px hsl(var(--luxury-gold) / 0.3);
+  }
+
+  /* Legacy dark theme support for product pages that need forced dark */
+  .luxury-dark-theme {
+    background: linear-gradient(180deg, hsl(var(--luxury-dark)) 0%, hsl(var(--luxury-charcoal)) 100%);
+  }
+
+  /* Pulse animations for luxury elements */
+  @keyframes luxuryPulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes luxuryGlow {
+    0%, 100% {
+      box-shadow: 0 0 40px -10px hsl(var(--luxury-gold) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 80px -10px hsl(var(--luxury-gold) / 0.4);
+    }
+  }
+
+  @keyframes shimmerGold {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes floatUp {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes borderGlow {
+    0%, 100% {
+      border-color: hsl(var(--luxury-gold) / 0.2);
+    }
+    50% {
+      border-color: hsl(var(--luxury-gold) / 0.5);
+    }
+  }
+
+  .animate-luxury-pulse {
+    animation: luxuryPulse 4s ease-in-out infinite;
+  }
+
+  .animate-luxury-glow {
+    animation: luxuryGlow 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer-gold {
+    background: linear-gradient(90deg, hsl(var(--luxury-gold-dim)) 0%, hsl(var(--luxury-gold)) 50%, hsl(var(--luxury-gold-dim)) 100%);
+    background-size: 200% auto;
+    animation: shimmerGold 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: floatUp 6s ease-in-out infinite;
+  }
+
+  .animate-border-glow {
+    animation: borderGlow 2s ease-in-out infinite;
+  }
+
+  /* Particles background effect */
+  .luxury-particles {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, hsl(var(--luxury-gold) / 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, hsl(var(--luxury-gold) / 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 40% 80%, hsl(var(--luxury-gold) / 0.04) 0%, transparent 30%);
+    pointer-events: none;
+  }
+
+  /* Scroll-triggered animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInRight {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-md bg-muted relative overflow-hidden;
+  }
+
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-background/50 to-transparent;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Smooth page transitions */
+.page-transition {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* დავამატოთ keyframes იმავე ფაილში უსაფრთხოებისთვის */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  /* Card hover effect */
+  .card-interactive {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Section animations */
+  .section-fade-in {
+    @apply animate-[fade-in_0.6s_ease-out];
+  }
+
+  .stagger-fade-in {
+    @apply opacity-0 animate-[fade-in_0.7s_ease-out_forwards];
+  }
+
+  .stagger-fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-fade-in:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+  .slide-up {
+    @apply animate-[fade-in_0.5s_ease-out];
+  }
+
+  /* Smooth transitions for all interactive elements */
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* ==========================================
+   CUSTOM SCROLLBARS - Modern & Thin
+   ========================================== */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+}
+
+/* Hide scrollbar until hover (optional - for cleaner look) */
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+/* Terminal scrollbar */
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 2px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
