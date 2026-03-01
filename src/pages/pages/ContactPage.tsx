@@ -53,19 +53,19 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "info@authit.io",
-      link: "mailto:info@authit.io",
+      value: "info@authit.it",
+      link: "mailto:info@authit.it",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+995 XXX XXX XXX",
-      link: "tel:+995XXXXXXXXX",
+      value: "+39 3387 028 503",
+      link: null,
     },
     {
       icon: MapPin,
       title: "Address",
-      value: "Tbilisi, Georgia",
+      value: "Trento, Italy",
       link: null,
     },
     {
